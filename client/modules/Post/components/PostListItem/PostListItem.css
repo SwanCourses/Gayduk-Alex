@@ -1,7 +1,9 @@
 .single-post {
   margin: 20px 0;
   padding: 15px;
-  border-radius: 2px;
+  background-color: #FAFAFA;
+  border: 1px solid #eee;
+  border-radius: 4px;
 }
 
 .post-title{

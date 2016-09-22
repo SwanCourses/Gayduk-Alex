@@ -31,7 +31,7 @@ export class App extends Component {
   render() {
     return (
       <div>
-        {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
+        {/*{this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}*/}
         <div>
           <Helmet
             title="My first React App"
@@ -56,7 +56,7 @@ export class App extends Component {
           <div className={styles.container}>
             {this.props.children}
           </div>
-          <Footer />
+          {/*<Footer />*/}
         </div>
       </div>
     );
