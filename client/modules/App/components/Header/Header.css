@@ -2,9 +2,7 @@
   background: #eee url('../../header-bk.png') center;
   background-size: cover;
   border-bottom: 1px solid #ccc;
-  width: 100%;
-  max-width: 1140px;
-  margin: auto;
+  flex: 1 100%;
 }
 
 .content {
