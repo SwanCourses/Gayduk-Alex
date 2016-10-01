@@ -2,11 +2,12 @@
   background: #eee url('../../header-bk.png') center;
   background-size: cover;
   border-bottom: 1px solid #ccc;
+  flex: 1 100%;
 }
 
 .content {
   width: 100%;
-  max-width: 980px;
+  max-width: 1140px;
   margin: auto;
   padding: 64px 16px;
   overflow: auto;
@@ -39,7 +40,7 @@
 
 .language-switcher ul {
   list-style: none;
-  width: 980px;
+  /*width: 1140px;*/
   margin: auto;
   text-align: right;
 }
