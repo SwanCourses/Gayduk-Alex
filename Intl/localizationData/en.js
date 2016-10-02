@@ -1,7 +1,7 @@
 export default {
   locale: 'en',
   messages: {
-    siteTitle: 'My first React App',
+    siteTitle: 'MERN Starter Blog',
     addPost: 'Add Post',
     switchLanguage: 'Switch Language',
     twitterMessage: 'We are on Twitter',
@@ -11,7 +11,15 @@ export default {
     authorName: 'Author\'s Name',
     postTitle: 'Post Title',
     postContent: 'Post Content',
-    submit: 'Submit',
+    createNewProduct: 'Добавить товар',
+    productName: 'Наименование',
+    productCode: 'Артикул',
+    productDescription: 'Описание',
+    productPrice: 'Цена',
+    productSize: 'Размер',
+    categoryName: 'Название категории',
+    createNewCategory: 'Создать новую категорию',
+    submit: 'Добавить',
     comment: `user {name} {value, plural,
     	  =0 {does not have any comments}
     	  =1 {has # comment}
