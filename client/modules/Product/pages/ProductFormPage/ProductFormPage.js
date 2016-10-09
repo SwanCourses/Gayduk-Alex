@@ -12,12 +12,13 @@ import {ProductColorInput} from '../../components/ProductColorInput/ProductColor
 
 import styles from '../../ProductFormPage.css'
 
-const productSizes = ['XS','S','M','L','XL'];
+const productSizes  = ['XS','S','M','L','XL'];
+const productGroups = ['Male','Female','Children'];
 
 class ProductFormPage extends Component {
   constructor(props){
     super(props);
-    this.state = {size: productSizes[0], colors: {color_0: ''}};
+    this.state = {size: productSizes[0], colors: {color_0: ''}, group: productGroups[0]};
   }
 
   onChange = (e) => {
@@ -25,13 +26,12 @@ class ProductFormPage extends Component {
   };
 
   addProduct = ()=> {
-    console.log(this.state.colors);
-
     let form = new FormData();
     form.append('product[name]', this.state.name);
     form.append('product[code]', this.state.code);
     form.append('product[price]', this.state.price);
     form.append('product[size]', this.state.size);
+    form.append('product[group]', this.state.group);
     form.append('product[description]', this.state.description);
 
     Object.keys(this.state.colors).forEach((key) => {
@@ -54,6 +54,10 @@ class ProductFormPage extends Component {
                  className={styles['form-field']} name="name"/>
           <input placeholder={this.props.intl.messages.productCode} value={this.state.code} onChange={this.onChange}
                  className={styles['form-field']} name="code"/>
+          <select value={this.state.group} onChange={this.onChange} className={styles['form-field']} name="group">
+            <option disabled>{this.props.intl.messages.productGroup}</option>
+            {productGroups.map(s => <option value={s} key={s}>{s}</option>)}
+          </select>
           <input placeholder={this.props.intl.messages.productPrice} value={this.state.price} onChange={this.onChange}
                  className={styles['form-field']} name="price"
                  type="number"/>
