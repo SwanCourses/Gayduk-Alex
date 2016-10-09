@@ -16,8 +16,9 @@ export function getProducts(req, res) {
   Product.find().sort('name').exec((err, products) => {
     if (err) {
       res.status(500).send(err);
+    } else {
+      res.json({ products });
     }
-    res.json({ products });
   });
 }
 
@@ -27,7 +28,8 @@ export function addProduct(req, res) {
       !req.body.product.price ||
       !req.body.product.description ||
       !req.body.product.size ||
-      !req.body.product.colors
+      !req.body.product.colors ||
+      !req.body.product.group
       )
   {
     res.status(403).end();
@@ -36,10 +38,11 @@ export function addProduct(req, res) {
     const newProduct = new Product(req.body.product);
 
     // Let's sanitize inputs
-    newProduct.code = sanitizeHtml(newProduct.code);
-    newProduct.name = sanitizeHtml(newProduct.name);
+    newProduct.code        = sanitizeHtml(newProduct.code);
+    newProduct.name        = sanitizeHtml(newProduct.name);
     newProduct.description = sanitizeHtml(newProduct.description);
-    newProduct.size = sanitizeHtml(newProduct.size);
+    newProduct.size        = sanitizeHtml(newProduct.size);
+    newProduct.group       = sanitizeHtml(newProduct.group);
 
     newProduct.cuid = cuid();
     for (let i = 0, file; file = req.files[i]; i++) {

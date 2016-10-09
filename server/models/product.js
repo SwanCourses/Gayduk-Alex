@@ -13,6 +13,7 @@ const productSchema = new Schema({
   price: { type: 'Number', required: true },
   size: { type: 'String', required: true },
   colors: { type: 'Object', required: true },
+  group: { type: 'String', required: true },
   photos: [],
 });
 

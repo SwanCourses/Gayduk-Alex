@@ -17,6 +17,7 @@ export default {
     productDescription: 'Описание',
     productPrice: 'Цена',
     productSize: 'Размер',
+    productGroup: 'Группа',
     categoryName: 'Название категории',
     createNewCategory: 'Создать новую категорию',
     submit: 'Добавить',
