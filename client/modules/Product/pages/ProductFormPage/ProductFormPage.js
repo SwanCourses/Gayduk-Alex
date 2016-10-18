@@ -18,11 +18,12 @@ const productGroups = ['Male','Female','Children'];
 class ProductFormPage extends Component {
   constructor(props){
     super(props);
-    this.state = {size: productSizes[0], colors: {color_0: ''}, group: productGroups[0]};
+    this.state = {size: productSizes[0], colors: {color_0: {name: '', photos: ''}}, group: productGroups[0]};
   }
 
   onChange = (e) => {
     this.setState({[e.target.name]: e.target.value });
+    console.log(e.target.value);
   };
 
   addProduct = ()=> {
@@ -35,12 +36,11 @@ class ProductFormPage extends Component {
     form.append('product[description]', this.state.description);
 
     Object.keys(this.state.colors).forEach((key) => {
-      form.append('product[colors][' + key + ']', this.state.colors[key]);
+      form.append('product[colors][' + key + '][name]', this.state.colors[key].name);
+      for (let i = 0, file; file =  this.state.colors[key].photos[i]; i++) {
+        form.append('product[colors][' + key + '][photos]', file, file.name);
+      }
     });
-
-    for (let i = 0, file; file = this.refs.photos.files[i]; i++) {
-      form.append('product[photos]', file, file.name);
-    }
 
     this.props.dispatch(addProductRequest(form))
   };
@@ -84,7 +84,7 @@ ProductFormPage.propTypes = {
   intl: intlShape.isRequired,
 };
 
-function mapStateToProps(state, props) {
+function mapStateToProps(store, props) {
   return {};
 }
 

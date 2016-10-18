@@ -45,9 +45,17 @@ export function addProduct(req, res) {
     newProduct.group       = sanitizeHtml(newProduct.group);
 
     newProduct.cuid = cuid();
-    for (let i = 0, file; file = req.files[i]; i++) {
-      newProduct.photos.push({ fileName: file.filename })
-    }
+
+    console.log(newProduct.colors);
+
+    Object.keys(newProduct.colors).forEach((key) => {
+      for (let i = 0, file; file = req.files[i]; i++) {
+        if ( newProduct.colors[key].photos === undefined) {
+          newProduct.colors[key].photos = [];
+        }
+        newProduct.colors[key].photos.push({ fileName: file.filename })
+      }
+    });
 
     newProduct.save().then((saved)=> {
       res.json({ product: saved })

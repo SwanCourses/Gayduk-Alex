@@ -19,9 +19,15 @@ export class ProductColorInput extends Component {
     this.setState({ colors: this.state.colors });
   }
 
-  onChange = (e) => {
-    this.state.colors[e.target.name] = e.target.value;
+  onChangeColor = (e) => {
+    this.state.colors[e.target.name].name = e.target.value;
     this.setState({ colors: this.state.colors });
+  };
+
+  onFileLoad = (e) => {
+    this.state.colors[e.target.dataset.originalName].photos = this.refs.photos.files;
+    this.setState({ colors: this.state.colors });
+    console.log(this.state.colors);
   };
 
   render() {
@@ -30,7 +36,12 @@ export class ProductColorInput extends Component {
         <div id="dynColors">
           {
             Object.keys(this.state.colors).map((value, index) => {
-              return <input type="text" name={value} key={value} value={this.state.colors[value]} onChange={this.onChange}/>;
+              return(
+                <div>
+                  <input type="text" name={value} key={value} value={this.state.colors[value].name} onChange={this.onChangeColor}/>
+                  <input ref="photos" type="file" data-original-name={value} onChange={this.onFileLoad} multiple="true"/>
+                </div>
+              );
             })
           }
         </div>
